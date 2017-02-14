@@ -58,35 +58,34 @@ Testing (Failure Case)
 1. Check the health status of the both nodes (both should be consistent):
 
 
-    % curl http://localhost:8080/singleton/health
-    % curl http://localhost:8180/singleton/health
+        % curl http://localhost:8080/singleton/health
+        % curl http://localhost:8180/singleton/health
 
 
 2. Let's pause the JVM process
 
 
-    % jps -l
-    {PID list}
-
-    % kill -STOP {PID}
+        % jps -l
+        {PID list}
+    
+        % kill -STOP {PID}
 
 
 3. Check the health status of the both nodes (both shouldn't be responding for 60 secs and then it'll be inconsistent):
 
 
-    % curl http://localhost:8080/singleton/health
-    % curl http://localhost:8180/singleton/health
+        % curl http://localhost:8080/singleton/health
+        % curl http://localhost:8180/singleton/health
 
 
 3. Resume the paused process after 60 secs and the let both the instances merge its cluster view (wait for few more seconds).
 
 
-    % kill -CONT {PID}
+        % kill -CONT {PID}
 
 
 4. Check the health status of the both nodes (both will be inconsistent and both assumes itself as master/active node):
 
 
-    % curl http/localhost:8080/singleton/health
-    % curl http://localhost:8180/singleton/health
->>>>>>> Sample war deployment module which contains:
+        % curl http/localhost:8080/singleton/health
+        % curl http://localhost:8180/singleton/health
